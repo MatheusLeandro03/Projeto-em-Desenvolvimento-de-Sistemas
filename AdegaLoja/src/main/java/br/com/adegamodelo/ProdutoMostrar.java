@@ -1,0 +1,36 @@
+package br.com.adegamodelo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import br.com.adega.jdbc.Conexao;
+
+public class ProdutoMostrar {
+
+	public static Produto mostrar(Integer cod_produto){
+		
+		Connection con= Conexao.obterConexao();
+		Produto produto = null;
+		String sql= "SELECT * FROM Produto WHERE cod_produto=?";
+		
+		try {
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setInt(1,cod_produto);
+			
+			ResultSet resultado= preparador.executeQuery();
+			if(resultado.next()){
+				produto = new Produto();
+				produto.setCod_produto(resultado.getString("cod_produto"));
+				produto.setNome_produto(resultado.getString("nome_produto"));
+				produto.setPreco(resultado.getFloat("preco"));					
+			}
+			
+		}catch (SQLException e) {
+		  e.printStackTrace();
+	}
+		return produto;
+		
+	}
+	}

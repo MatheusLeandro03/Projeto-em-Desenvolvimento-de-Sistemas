@@ -1,0 +1,31 @@
+package br.com.adegamodelo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import br.com.adega.jdbc.Conexao;
+
+public class PedidoCompra {
+	public void comprar(Pedido pedido, Produto produto) {
+		
+		Connection con = Conexao.obterConexao();
+		String sql = "INSERT INTO Pedido (forma_pagamento,cod_produto, cpf) VALUES (?,?,?)";
+		
+		try {
+			PreparedStatement preparador = con.prepareStatement(sql);
+			preparador.setString(1,pedido.getForma_pagamento());
+			preparador.setString(2,produto.getCod_produto());	
+			preparador.setString(3,pedido.getCpf());	
+						
+			preparador.execute();
+			con.close();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+
+}
