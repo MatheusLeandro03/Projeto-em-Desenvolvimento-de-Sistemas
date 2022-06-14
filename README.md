@@ -8,6 +8,6 @@
 <h4>Dentro da pasta webapp</h4>
 * Inserir todos os arquivos .jsp;<br>
 * Criar uma pasta <b>imagens</b> e inserir dentro dela as imagens adicionadas neste repositório;<br>
-* Utilizar os arquivos .jar <b>jstl</b> e <b>jdbc mysql</b><br>
+* Utilizar os arquivos .jar <b>jstl</b> e <b>jdbc mysql</b> dentro da pasta WEB-INF > lib <br>
 * Download jdbc: https://dev.mysql.com/downloads/connector/j/ <br>
 * Download jstl: https://mvnrepository.com/artifact/jstl/jstl/1.2 <br>
