@@ -1,0 +1,36 @@
+CREATE DATABASE USUARIOS;
+USE USUARIOS;
+
+CREATE TABLE Cliente(
+cpf VARCHAR(11) PRIMARY KEY,
+nome VARCHAR(35) ,
+data_nascimento DATE ,
+endereco VARCHAR(50) ,
+telefone VARCHAR(16)
+);
+CREATE TABLE Produto (
+cod_produto INT PRIMARY KEY AUTO_INCREMENT,
+nome_produto VARCHAR(25) ,
+preco FLOAT (6,2)
+);
+CREATE TABLE Pedido(
+cod_pedido INT PRIMARY KEY AUTO_INCREMENT,
+forma_pagamento VARCHAR(20),
+cod_produto INT,
+cpf VARCHAR (11)
+);
+
+ALTER TABLE Pedido ADD CONSTRAINT fk_cod_produto FOREIGN KEY (cod_produto) REFERENCES Produto (cod_produto);
+ALTER TABLE Pedido ADD CONSTRAINT fk_cpf_cliente FOREIGN KEY (cpf) REFERENCES Cliente (cpf);
+
+INSERT INTO Produto (nome_produto,preco) VALUES ("Cerveja Skol",15.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Cerveja Budweiser",30.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Cerveja Heineken",20.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Cerveja Corona",25.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Whisky White Horse",60.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Whisky Red Label",80.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Whisky Black Label",120.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Whisky Jack Daniels",140.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Vinho Pérgola",200.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Vinho Calle",100.00);
+INSERT INTO Produto (nome_produto,preco) VALUES ("Vinho Malage",50.00);
